@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from "react";
+
+import "./App.css";
+
+import SearchBar from "./components/SearchBar";
+import Page from "./components/Page";
 
 function App() {
+  const [selected, setSelected] = useState(-1);
+  useEffect(() => {
+    window.alert(
+      "Please note that the dashboard is for demonstration purpose only. It DOES NOT contain all the rows (computer scientists) or all the columns (attributes)."
+    );
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SearchBar onSubmit={setSelected} />
+      <Page id={selected} />
     </div>
   );
 }

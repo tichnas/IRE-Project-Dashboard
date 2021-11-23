@@ -1,0 +1,147 @@
+.search-bar {
+  display: inline-block;
+  position: relative;
+  width: 40rem;
+  margin: 3rem 0;
+
+  @media only screen and (max-width: 62.5em) {
+    width: 30rem;
+  }
+
+  @media only screen and (max-width: 50em) {
+    width: 20rem;
+  }
+
+  @media only screen and (max-width: 43.75em) {
+    width: calc(100% - 15rem);
+  }
+
+  &__input {
+    width: 100%;
+    vertical-align: middle;
+    border-radius: 0.5rem;
+    border: 1px solid grey;
+    padding-right: 4rem;
+    transition: border 0.2s, transform 0.3s;
+
+    &:focus {
+      border: 2px solid blue;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    left: calc(100% - 3rem);
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: color 0.2s, left 0.3s;
+
+    &:hover {
+      color: blue;
+    }
+  }
+
+  &--small &__input {
+    transform: scaleX(0.5) scaleY(0.8);
+    padding-right: 1.5rem;
+
+    @media only screen and (max-width: 50em) and (min-width: 43.75rem),
+      only screen and (max-width: 28.125em) {
+      transform: scaleX(1) scaleY(1);
+    }
+
+    &:focus {
+      transform: scaleX(1) scaleY(1);
+      padding-right: 4rem;
+
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+
+    &::placeholder {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  &--small:hover &__input {
+    transform: scaleX(1) scaleY(1);
+    border: 2px solid grey;
+    padding-right: 4rem;
+
+    &:focus {
+      border: 2px solid blue;
+    }
+  }
+
+  &--small &__icon {
+    transform: translate(-50%, -50%);
+    left: 50%;
+    color: blue;
+  }
+
+  &--small:hover &__icon,
+  &--small &__input:focus + &__icon {
+    left: calc(100% - 3rem);
+    transform: translateY(-50%);
+    color: black;
+
+    &:hover {
+      color: blue;
+    }
+  }
+
+  &--small:hover &__input::placeholder {
+    opacity: 0.5;
+  }
+
+  &__suggestions {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    background-color: white;
+    z-index: 1;
+    border: 1px solid grey;
+    border-top: none;
+    border-bottom: none;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+
+    li {
+      padding: 0.75rem 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.2s;
+
+      &:last-child {
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+        border-bottom: 1px solid grey;
+      }
+
+      &:hover,
+      &.selected {
+        background-color: grey;
+      }
+
+      .search-bar__found {
+        color: blue;
+      }
+
+      i {
+        margin-right: 1rem;
+      }
+    }
+  }
+
+  &__input:focus ~ &__suggestions,
+  &:hover &__suggestions {
+    opacity: 1;
+    visibility: visible;
+  }
+}

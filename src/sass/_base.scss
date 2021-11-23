@@ -1,0 +1,36 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 0 2rem;
+}
+
+.input {
+  padding: 0.75rem 1.5rem;
+  border: 1px solid grey;
+  border-radius: 0.5rem;
+  transition: border 0.2s;
+
+  &:focus,
+  &:hover {
+    outline: none;
+    border: 1px solid blue;
+  }
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 1rem;
+  column-gap: 2rem;
+}
